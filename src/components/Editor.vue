@@ -2,19 +2,25 @@
   <div class="editor">
     <div class="buttonitem">
       <ol>
-        <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active:currentTab === i}" v-on:click="currentTab = i">
+        <li v-for="(item,index) in resume.config" v-bind:class="{active:selected === item.field}" v-on:click="selected = item.field">
             <svg class="icon">
-                <use v-bind:xlink:href="`#icon-${icons[i]}`"></use>
+                <use v-bind:xlink:href="`#icon-${item.icon}`"></use>
             </svg>
         </li>
       </ol>
     </div>
     <div class="tabs">
       <ol>
-        <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active:currentTab === i}">
-        tab{{i+1}}
+        <li v-for="item in resume.config" v-show="item.field === selected">
+          <div v-for="(value,key) in resume[item.field]">
+            <h3>{{key}}</h3>
+            <el-input v-model="resume[item.field][key]" v-bind:placeholder="`请输入`+key"></el-input>
+          </div>
+          <!-- <el-button type="primary" icon="el-icon-circle-plus" v-show="selected != 'info' && selected !='phone'" @click="additem"></el-button>
+          <el-button type="primary" icon="el-icon-circle-close" v-show="selected != 'info' && selected !='phone'"></el-button> -->
         </li>
       </ol>
+      
     </div>
   </div>
 </template>
@@ -22,11 +28,49 @@
   export default{
     data(){
       return {
-        currentTab:0,
-        icons:['info','work','school','project','reward','phone']
+        selected:'info',
+        resume:{
+          config:[
+          {field:'info',icon:'info'},
+          {field:'work',icon:'work'},
+          {field:'school',icon:'school'},
+          {field:'project',icon:'project'},
+          {field:'reward',icon:'reward'},
+          {field:'phone',icon:'phone'}
+        ] ,
+        info:{
+          姓名:'',
+          年龄:''
+        },
+        work:{
+          公司:'',
+          职位:''
+        },
+        school:{
+          学校:'',
+          时间:'',
+          学位:''
+        },
+        project:{
+          项目名称:'',
+          负责内容:''
+        },
+        reward:{
+          获奖名称:''
+        },
+        phone:{
+          手机号:'',
+          QQ:'',
+          wechat:''
+        }
+          
+        
+        }
+        
       }
       
     }
+    
   }
 </script>
   <style lang="scss">
@@ -48,12 +92,6 @@
             color:black;
             
           }
-    }
-    .tabs li{
-      display: none;
-    &.active{
-      display: block;
-    }
     }
 
   </style>
