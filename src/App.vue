@@ -41,7 +41,7 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -52,8 +52,12 @@
     flex: 1;
 
     >.editor {
-      min-width: 40em;
+      min-width: 25em;
       margin: 16px 0 16px 16px;
+      .tabs ol{
+        margin-left: 3em;
+        margin-top: 4em;
+      }
     }
     >.preview {
       flex: 1;

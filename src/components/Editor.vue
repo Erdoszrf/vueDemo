@@ -12,9 +12,9 @@
     <div class="tabs">
       <ol>
         <li v-for="item in resume.config" v-show="item.field === selected">
-          <div v-for="(value,key) in resume[item.field]">
-            <h3>{{key}}</h3>
-            <el-input v-model="resume[item.field][key]"></el-input>
+          <div v-for="(value,index) in resume[item.field]">
+            <h3>{{index}}</h3>
+            <el-input v-model="resume[item.field][index]" ></el-input>
           </div>
           
           
