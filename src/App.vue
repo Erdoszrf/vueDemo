@@ -14,8 +14,10 @@
   import Topbar from './components/Topbar'
   import Editor from './components/Editor'
   import Preview from './components/Preview'
+  import store from './store/index.js'
   export default {
     name: 'App',
+    store,
     components: {
       Topbar, Editor, Preview,
     }

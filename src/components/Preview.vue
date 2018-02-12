@@ -1,9 +1,20 @@
 <template>
   <div class="preview">
-    这里是preview
+    {{resume}}
   </div>
 </template>
+<script>
+  export default{
+        name: 'ResumePreview',
+        computed: {
+          resume() {
+            return this.$store.state.resume
+          }
+        }
+      }
 
+
+</script>
   <style>
     .preview{
       
